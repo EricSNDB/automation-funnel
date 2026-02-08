@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unternehmer Funnel – Test</title>
+  <style>
+    :root { --bg:#0b0f17; --card:#111827; --muted:#93a4b7; --text:#e7eef7; --line:#243244; --ok:#22c55e; --warn:#f59e0b; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:linear-gradient(180deg,#070a10,var(--bg));color:var(--text);}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+    .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#60a5fa,#22c55e)}
+    .pill{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+    .hero{margin-top:18px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:16px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .card{background:rgba(17,24,39,.9);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1{margin:0 0 10px;font-size:34px;line-height:1.1;letter-spacing:-.02em}
+    h2{margin:0 0 8px;font-size:18px}
+    p{margin:0 0 10px;color:var(--muted)}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .btn{cursor:pointer;border:1px solid var(--line);background:#0f172a;color:var(--text);padding:12px 14px;border-radius:14px;font-weight:800}
+    .btn.primary{background:linear-gradient(135deg,#2563eb,#22c55e);border-color:transparent}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .stepper{display:flex;gap:8px;align-items:center}
+    .dot{width:10px;height:10px;border-radius:999px;background:#334155}
+    .dot.on{background:#60a5fa}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+    .badge.ok{border-color:rgba(34,197,94,.4);color:#a7f3d0}
+    .badge.warn{border-color:rgba(245,158,11,.4);color:#fde68a}
+    .field{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+    label{font-size:12px;color:var(--muted)}
+    input,select,textarea{width:100%;padding:12px;border-radius:14px;border:1px solid var(--line);background:#0b1220;color:var(--text);outline:none}
+    textarea{min-height:86px;resize:vertical}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:14px}
+    .hint{font-size:12px;color:var(--muted)}
+    .resultBox{margin-top:12px;border:1px dashed var(--line);border-radius:18px;padding:14px;background:rgba(2,6,23,.35)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New";font-size:12px;color:#c7d2fe;white-space:pre-wrap;word-break:break-word}
+    .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .kpi{padding:12px;border-radius:16px;border:1px solid var(--line);background:rgba(2,6,23,.25)}
+    .kpi .t{font-size:12px;color:var(--muted)} .kpi .v{font-size:18px;font-weight:900;margin-top:4px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-weight:900;">Unternehmer / Selbstständige</div>
+          <div class="hint">Digitale Vorqualifizierung → Automation oder Beratung</div>
+        </div>
+      </div>
+      <div class="pill">MVP · Routing: &lt;200€ Automation · ≥200€ Beratung</div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <h1>Vermögensaufbau mit System – ohne Zeit zu verlieren.</h1>
+        <p>Für Unternehmer zählt Effizienz: Das System filtert passende Anfragen und priorisiert Beratung nur, wenn es Sinn macht.</p>
+
+        <div class="kpis">
+          <div class="kpi"><div class="t">Fokus</div><div class="v">Steuer & Cashflow</div></div>
+          <div class="kpi"><div class="t">Outcome</div><div class="v">Plan statt Chaos</div></div>
+        </div>
+
+        <h2 style="margin-top:14px;">Was du bekommst</h2>
+        <ul>
+          <li>Klare Roadmap: Absicherung → Liquidität → Vermögensaufbau</li>
+          <li>Vorqualifizierung spart Zeit (beidseitig)</li>
+          <li>Persönliche Beratung nur bei passender Sparquote</li>
+        </ul>
+
+        <div class="row" style="margin-top:16px;">
+          <button class="btn primary" id="startBtn">Jetzt starten</button>
+          <a class="btn" href="./index.html" style="text-decoration:none;">Zur Auswahl</a>
+        </div>
+        <div class="hint" style="margin-top:10px;">Dauer ~60 Sek. (Demo: Datenschutz/Einwilligung Platzhalter)</div>
+      </div>
+
+      <div class="card" id="funnelCard" style="display:none;">
+        <div class="row" style="margin-top:0;">
+          <div class="stepper" id="stepper"></div>
+          <span class="badge" id="scoreBadge">Score: –</span>
+        </div>
+        <div id="stepContent"></div>
+        <div class="row">
+          <button class="btn" id="backBtn">Zurück</button>
+          <button class="btn primary" id="nextBtn">Weiter</button>
+        </div>
+        <div class="hint" id="stepHint" style="margin-top:10px;"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  const state = {
+    step: 0,
+    data: {
+      persona: "Unternehmer",
+      companyForm: "",
+      incomeRange: "",
+      monthlySave: null,
+      assetsRange: "",
+      goal: "",
+      urgency: "",
+      situation: "",
+      consent: false,
+      email: "",
+      phone: ""
+    },
+    score: 0,
+    route: null
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+
+  function calcScore(d){
+    let s=0;
+    const m=Number(d.monthlySave||0);
+    if (m>=500) s+=60; else if (m>=200) s+=45; else if (m>=100) s+=25; else if (m>=30) s+=10;
+
+    const inc=d.incomeRange;
+    if (inc===">7000") s+=20; else if (inc==="4000-7000") s+=14; else if (inc==="2500-4000") s+=8; else if (inc==="<2500") s+=3;
+
+    const a=d.assetsRange;
+    if (a===">200k") s+=15; else if (a==="50-200k") s+=10; else if (a==="10-50k") s+=6; else if (a==="<10k") s+=2;
+
+    if (d.urgency==="0-3") s+=10; else if (d.urgency==="3-12") s+=6; else if (d.urgency==="info") s+=2;
+
+    if (d.companyForm) s+=5; // Unternehmer-spezifisch
+    return clamp(s,0,100);
+  }
+  function calcRoute(d){ return (Number(d.monthlySave||0) >= 200) ? "HUMAN" : "AUTO"; }
+
+  function badge(score, route){
+    const b=$("scoreBadge");
+    b.textContent=`Score: ${score} · Route: ${route==="HUMAN"?"Beratung":"Automation"}`;
+    b.className="badge "+(route==="HUMAN"?"ok":"warn");
+  }
+
+  function renderStepper(){
+    const el=$("stepper"); el.innerHTML="";
+    for(let i=0;i<steps.length;i++){
+      const d=document.createElement("div");
+      d.className="dot"+(i===state.step?" on":"");
+      el.appendChild(d);
+    }
+  }
+
+  function setHint(t){ $("stepHint").textContent=t||""; }
+
+  function validateStep(){
+    const d=state.data;
+    switch(state.step){
+      case 0: return !!d.companyForm;
+      case 1: return !!d.incomeRange && d.monthlySave!==null && d.monthlySave!=="" && Number(d.monthlySave)>=0;
+      case 2: return !!d.assetsRange && !!d.goal && !!d.urgency;
+      case 3: return d.consent && (d.email.trim().length>3 || d.phone.trim().length>5);
+      default: return true;
+    }
+  }
+  function updateNextDisabled(){ $("nextBtn").disabled=!validateStep(); }
+
+  function setData(patch){
+    state.data={...state.data,...patch};
+    state.score=calcScore(state.data);
+    state.route=calcRoute(state.data);
+    badge(state.score,state.route);
+    updateNextDisabled();
+  }
+
+  const steps=[
+    () => {
+      setHint("Unternehmer-Setup: Wir nutzen Firmenform + Situation fürs Beratungsmessaging.");
+      return `
+        <h3 style="margin:10px 0 6px;">1) Unternehmen</h3>
+        <div class="field">
+          <label>Firmenform</label>
+          <select id="companyForm">
+            <option value="">Bitte wählen</option>
+            <option value="Einzelunternehmen">Einzelunternehmen</option>
+            <option value="UG/GmbH">UG / GmbH</option>
+            <option value="Freiberuflich">Freiberuflich</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Situation (optional)</label>
+          <textarea id="situation" placeholder="z.B. schwankende Einnahmen, Liquidität, Steuer, Altersvorsorge..."></textarea>
+        </div>
+      `;
+    },
+    () => {
+      setHint("Sparquote triggert Automation vs. persönliche Beratung.");
+      return `
+        <h3 style="margin:10px 0 6px;">2) Einkommen & Sparquote</h3>
+        <div class="grid2">
+          <div class="field">
+            <label>Nettoeinkommen (Range)</label>
+            <select id="incomeRange">
+              <option value="">Bitte wählen</option>
+              <option value="<2500">&lt; 2.500 €</option>
+              <option value="2500-4000">2.500–4.000 €</option>
+              <option value="4000-7000">4.000–7.000 €</option>
+              <option value=">7000">&gt; 7.000 €</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Monatliche Sparquote / Anlagesumme (€)</label>
+            <input id="monthlySave" inputmode="numeric" type="number" min="0" step="10" placeholder="z.B. 200" />
+            <div class="hint">Regel: &lt;200€ → Automation | ≥200€ → Beratung</div>
+          </div>
+        </div>
+      `;
+    },
+    () => {
+      setHint("Ziel & Status geben euch die Storyline fürs Angebot.");
+      return `
+        <h3 style="margin:10px 0 6px;">3) Ziele & Status</h3>
+        <div class="grid2">
+          <div class="field">
+            <label>Vermögen (grobe Range)</label>
+            <select id="assetsRange">
+              <option value="">Bitte wählen</option>
+              <option value="<10k">&lt; 10.000 €</option>
+              <option value="10-50k">10.000–50.000 €</option>
+              <option value="50-200k">50.000–200.000 €</option>
+              <option value=">200k">&gt; 200.000 €</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Primäres Ziel</label>
+            <select id="goal">
+              <option value="">Bitte wählen</option>
+              <option value="Vermögensaufbau">Vermögensaufbau</option>
+              <option value="Altersvorsorge">Altersvorsorge</option>
+              <option value="Steuer">Steueroptimierung</option>
+              <option value="Absicherung">Risikoabsicherung</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Zeithorizont / Dringlichkeit</label>
+          <select id="urgency">
+            <option value="">Bitte wählen</option>
+            <option value="0-3">0–3 Monate</option>
+            <option value="3-12">3–12 Monate</option>
+            <option value="info">Nur informieren</option>
+          </select>
+        </div>
+      `;
+    },
+    () => {
+      setHint("Kontakt + Einwilligung = Übergabe an CRM/Termin/Abratung.");
+      return `
+        <h3 style="margin:10px 0 6px;">4) Kontakt & Einwilligung</h3>
+        <div class="grid2">
+          <div class="field">
+            <label>E-Mail (optional, empfohlen)</label>
+            <input id="email" type="email" placeholder="name@mail.de" />
+          </div>
+          <div class="field">
+            <label>Telefon (optional)</label>
+            <input id="phone" type="tel" placeholder="+49 ..." />
+          </div>
+        </div>
+        <div class="field">
+          <label style="display:flex;gap:10px;align-items:flex-start;">
+            <input id="consent" type="checkbox" style="width:auto;margin-top:3px;" />
+            <span>Ich willige in die Verarbeitung zur Kontaktaufnahme & Vorqualifizierung ein. (Demo – finalisieren!)</span>
+          </label>
+        </div>
+      `;
+    },
+    () => {
+      const d=state.data, score=state.score, route=state.route;
+      const nextAction = route==="HUMAN"
+        ? "Persönliche Beratung: Termin anbieten + Vorbereitung (Cashflow/Steuer/Absicherung) ins CRM."
+        : "Automation: Abratung + Finanzbasis (Liquidität/Absicherung) + Wiedervorlage setzen.";
+
+      const lead = {
+        createdAt: new Date().toISOString(),
+        vertical: "Unternehmer/Selbstständig",
+        persona: d.persona,
+        companyForm: d.companyForm,
+        incomeRange: d.incomeRange,
+        monthlySave: Number(d.monthlySave||0),
+        assetsRange: d.assetsRange,
+        goal: d.goal,
+        urgency: d.urgency,
+        situation: d.situation || "",
+        score,
+        route,
+        recommendedNextAction: nextAction,
+        contact: { email: d.email||"", phone: d.phone||"" }
+      };
+
+      return `
+        <h3 style="margin:10px 0 6px;">Ergebnis</h3>
+        <div class="resultBox">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:900;font-size:16px;">${route==="HUMAN"?"✅ Persönliche Beratung":"⚠️ Automatisierte Abratung"}</div>
+              <div class="hint">${nextAction}</div>
+            </div>
+            <button class="btn" id="copyJson">Lead-JSON kopieren</button>
+          </div>
+          <div style="margin-top:12px;" class="mono" id="jsonOut"></div>
+
+          <div style="margin-top:12px;">
+            ${route==="HUMAN"
+              ? `<button class="btn primary" id="bookBtn">Termin-CTA (Demo)</button>
+                 <div class="hint" style="margin-top:8px;">Später: echter Terminlink + CRM Push.</div>`
+              : `<button class="btn primary" id="autoBtn">Abratung starten (Demo)</button>
+                 <div class="hint" style="margin-top:8px;">Später: Video/Guide + E-Mail Sequenz.</div>`
+            }
+          </div>
+        </div>
+        <div class="row"><button class="btn" id="restartBtn">Neu starten</button></div>
+      `;
+    }
+  ];
+
+  function render(){
+    renderStepper();
+    $("stepContent").innerHTML = steps[state.step]();
+
+    $("backBtn").style.display = state.step===0 ? "none":"inline-block";
+    $("nextBtn").style.display = state.step===steps.length-1 ? "none":"inline-block";
+    $("nextBtn").textContent = (state.step===steps.length-2) ? "Ergebnis" : "Weiter";
+
+    // Bind fields
+    if(state.step===0){
+      const companyForm=$("companyForm"), situation=$("situation");
+      companyForm.value=state.data.companyForm;
+      situation.value=state.data.situation;
+      companyForm.addEventListener("change",e=>setData({companyForm:e.target.value}));
+      situation.addEventListener("input",e=>setData({situation:e.target.value}));
+    }
+    if(state.step===1){
+      const incomeRange=$("incomeRange"), monthlySave=$("monthlySave");
+      incomeRange.value=state.data.incomeRange;
+      monthlySave.value=(state.data.monthlySave ?? "");
+      incomeRange.addEventListener("change",e=>setData({incomeRange:e.target.value}));
+      monthlySave.addEventListener("input",e=>setData({monthlySave:e.target.value}));
+    }
+    if(state.step===2){
+      const assetsRange=$("assetsRange"), goal=$("goal"), urgency=$("urgency");
+      assetsRange.value=state.data.assetsRange; goal.value=state.data.goal; urgency.value=state.data.urgency;
+      assetsRange.addEventListener("change",e=>setData({assetsRange:e.target.value}));
+      goal.addEventListener("change",e=>setData({goal:e.target.value}));
+      urgency.addEventListener("change",e=>setData({urgency:e.target.value}));
+    }
+    if(state.step===3){
+      const email=$("email"), phone=$("phone"), consent=$("consent");
+      email.value=state.data.email; phone.value=state.data.phone; consent.checked=!!state.data.consent;
+      email.addEventListener("input",e=>setData({email:e.target.value}));
+      phone.addEventListener("input",e=>setData({phone:e.target.value}));
+      consent.addEventListener("change",e=>setData({consent:e.target.checked}));
+    }
+    if(state.step===4){
+      const d=state.data;
+      const lead = {
+        createdAt: new Date().toISOString(),
+        vertical: "Unternehmer/Selbstständig",
+        persona: d.persona,
+        companyForm: d.companyForm,
+        incomeRange: d.incomeRange,
+        monthlySave: Number(d.monthlySave||0),
+        assetsRange: d.assetsRange,
+        goal: d.goal,
+        urgency: d.urgency,
+        situation: d.situation || "",
+        score: state.score,
+        route: state.route,
+        recommendedNextAction: state.route==="HUMAN"
+          ? "Persönliche Beratung: Termin anbieten + Vorbereitung (Cashflow/Steuer/Absicherung) ins CRM."
+          : "Automation: Abratung + Finanzbasis (Liquidität/Absicherung) + Wiedervorlage setzen.",
+        contact: { email: d.email||"", phone: d.phone||"" }
+      };
+      $("jsonOut").textContent = JSON.stringify(lead,null,2);
+
+      $("copyJson").addEventListener("click", async ()=>{
+        try{ await navigator.clipboard.writeText(JSON.stringify(lead,null,2)); alert("Lead-JSON kopiert."); }
+        catch{ alert("Kopieren nicht möglich. Bitte Text markieren und manuell kopieren."); }
+      });
+
+      const bookBtn=$("bookBtn"); if(bookBtn) bookBtn.addEventListener("click",()=>alert("Demo: Terminlink öffnen (später Calendly/Tool)."));
+      const autoBtn=$("autoBtn"); if(autoBtn) autoBtn.addEventListener("click",()=>alert("Demo: Abratung/Guide starten + E-Mail Sequenz."));
+      $("restartBtn").addEventListener("click", ()=>{
+        state.step=0;
+        state.data={persona:"Unternehmer",companyForm:"",incomeRange:"",monthlySave:null,assetsRange:"",goal:"",urgency:"",situation:"",consent:false,email:"",phone:""};
+        setData(state.data); render();
+      });
+    }
+
+    badge(state.score,state.route);
+    updateNextDisabled();
+  }
+
+  $("startBtn").addEventListener("click", ()=>{
+    $("funnelCard").style.display="block";
+    $("startBtn").disabled=true;
+    setData(state.data);
+    render();
+  });
+
+  $("backBtn").addEventListener("click", ()=>{ state.step=Math.max(0,state.step-1); render(); });
+  $("nextBtn").addEventListener("click", ()=>{ if(!validateStep()) return; state.step=Math.min(steps.length-1,state.step+1); render(); });
+
+  setData(state.data);
+})();
+</script>
+</body>
+</html>
